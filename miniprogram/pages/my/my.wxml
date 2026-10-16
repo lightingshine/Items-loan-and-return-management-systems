@@ -1,0 +1,48 @@
+<view class="page">
+  <view class="profile">
+    <image wx:if="{{user && user.avatarUrl}}" class="avatar" src="{{user.avatarUrl}}" mode="aspectFill" />
+    <view wx:else class="avatar avatar-text">{{user && user.nickname ? user.nickname[0] : '我'}}</view>
+    <view class="profile-info">
+      <view class="profile-name">
+        {{user.nickname || '微信用户'}}
+        <text class="role-badge {{user.role}}" wx:if="{{user}}">{{user.roleText}}</text>
+      </view>
+      <view class="profile-tip" bindtap="onSetProfile">点击设置昵称与头像</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">我借用的物品（{{myItems.length}}）</view>
+    <view wx:if="{{loading}}" class="loading">加载中...</view>
+    <view wx:elif="{{myItems.length === 0}}" class="section-empty">当前没有借用中的物品</view>
+    <view
+      class="my-item"
+      wx:for="{{myItems}}"
+      wx:key="_id"
+      bindtap="goDetail"
+      data-id="{{item._id}}"
+    >
+      <view class="my-item-name">{{item.name}}</view>
+      <view class="my-item-time">借出时间：{{item.borrowTimeText}}</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">管理</view>
+    <view class="menu-item" bindtap="goScan">
+      <text class="menu-icon">📷</text>
+      <text class="menu-text">扫码借还</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goAdmin" wx:if="{{user.role === 'admin' || user.role === 'superadmin'}}">
+      <text class="menu-icon">📦</text>
+      <text class="menu-text">物品管理</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goAdminManage" wx:if="{{user.role === 'superadmin'}}">
+      <text class="menu-icon">👥</text>
+      <text class="menu-text">管理员管理</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+</view>

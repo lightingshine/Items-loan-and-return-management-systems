@@ -1,0 +1,57 @@
+<view class="page">
+  <view class="header">
+    <view class="header-title">实验室物品</view>
+    <view class="header-stats">
+      <view class="stat-chip">共 {{stats.total}} 件</view>
+      <view class="stat-chip stat-available">空闲 {{stats.available}}</view>
+      <view class="stat-chip stat-borrowed">已借出 {{stats.borrowed}}</view>
+    </view>
+  </view>
+
+  <view class="search-bar">
+    <input
+      class="search-input"
+      placeholder="搜索物品名称或编码"
+      placeholder-class="search-placeholder"
+      value="{{keyword}}"
+      bindinput="onKeywordInput"
+    />
+  </view>
+
+  <view class="filter-tabs">
+    <view class="filter-tab {{filter === 'all' ? 'active' : ''}}" bindtap="onFilter" data-filter="all">全部</view>
+    <view class="filter-tab {{filter === 'available' ? 'active' : ''}}" bindtap="onFilter" data-filter="available">空闲</view>
+    <view class="filter-tab {{filter === 'borrowed' ? 'active' : ''}}" bindtap="onFilter" data-filter="borrowed">已借出</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <view wx:elif="{{displayItems.length === 0}}" class="empty">暂无物品</view>
+
+  <view wx:else class="item-list">
+    <view
+      class="item-card"
+      wx:for="{{displayItems}}"
+      wx:key="_id"
+      bindtap="goDetail"
+      data-id="{{item._id}}"
+    >
+      <view class="item-icon">{{item.status === 'borrowed' ? '📦' : '✅'}}</view>
+      <view class="item-body">
+        <view class="item-name">{{item.name}}</view>
+        <view class="item-code">编码：{{item.code}}</view>
+        <view class="item-borrower" wx:if="{{item.status === 'borrowed'}}">
+          借用人：{{item.borrowerName}} · {{item.borrowTimeText}}
+        </view>
+      </view>
+      <view class="item-right">
+        <view class="status-badge {{item.status}}">{{item.statusText}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="scan-fab" bindtap="goScan">
+    <view class="scan-fab-icon">＋</view>
+    <view class="scan-fab-text">扫码借还</view>
+  </view>
+</view>

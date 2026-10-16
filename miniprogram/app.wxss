@@ -1,0 +1,116 @@
+/* 全局样式 */
+page {
+  background: #f5f6fa;
+  color: #1f2329;
+  font-size: 28rpx;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+view, text, input, textarea, button {
+  box-sizing: border-box;
+}
+
+/* 卡片 */
+.card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin: 20rpx 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(31, 35, 41, 0.06);
+}
+
+/* 主按钮 */
+.btn-primary {
+  background: linear-gradient(135deg, #4b8bff, #3b7cff);
+  color: #ffffff;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  border: none;
+  line-height: 88rpx;
+  height: 88rpx;
+  text-align: center;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-primary[disabled] {
+  opacity: 0.6;
+  color: #ffffff;
+  background: linear-gradient(135deg, #4b8bff, #3b7cff);
+}
+
+/* 次要按钮 */
+.btn-plain {
+  background: #ffffff;
+  color: #3b7cff;
+  border: 2rpx solid #3b7cff;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  line-height: 84rpx;
+  height: 88rpx;
+  text-align: center;
+}
+
+.btn-plain::after {
+  border: none;
+}
+
+/* 状态徽标 */
+.status-badge {
+  display: inline-block;
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+.status-badge.available {
+  color: #16a34a;
+  background: #dcfce7;
+}
+
+.status-badge.borrowed {
+  color: #d97706;
+  background: #fef3c7;
+}
+
+/* 角色徽标 */
+.role-badge {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 16rpx;
+  font-size: 22rpx;
+  color: #ffffff;
+}
+
+.role-badge.superadmin {
+  background: #7c3aed;
+}
+
+.role-badge.admin {
+  background: #3b7cff;
+}
+
+.role-badge.user {
+  background: #9aa0a6;
+}
+
+/* 空状态 */
+.empty {
+  text-align: center;
+  color: #9aa0a6;
+  padding: 120rpx 0;
+  font-size: 28rpx;
+}
+
+/* 加载中 */
+.loading {
+  text-align: center;
+  color: #9aa0a6;
+  padding: 80rpx 0;
+  font-size: 26rpx;
+}

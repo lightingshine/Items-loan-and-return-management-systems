@@ -1,0 +1,97 @@
+.page {
+  padding-bottom: 40rpx;
+}
+
+.filter-tabs {
+  display: flex;
+  padding: 24rpx 24rpx 0;
+}
+
+.filter-tab {
+  flex: 1;
+  text-align: center;
+  height: 72rpx;
+  line-height: 72rpx;
+  color: #5f646b;
+  font-size: 28rpx;
+  background: #ffffff;
+  margin: 0 8rpx;
+  border-radius: 36rpx;
+}
+
+.filter-tab.active {
+  background: #3b7cff;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.total-tip {
+  padding: 20rpx 32rpx 0;
+  font-size: 24rpx;
+  color: #9aa0a6;
+}
+
+.record-list {
+  padding-top: 16rpx;
+}
+
+.record-item {
+  display: flex;
+  align-items: flex-start;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin: 0 24rpx 12rpx;
+}
+
+.record-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  margin: 12rpx 20rpx 0 6rpx;
+  flex-shrink: 0;
+}
+
+.record-dot.borrow {
+  background: #f59e0b;
+}
+
+.record-dot.return {
+  background: #16a34a;
+}
+
+.record-body {
+  flex: 1;
+}
+
+.record-title {
+  font-size: 30rpx;
+  color: #1f2329;
+  font-weight: 500;
+}
+
+.record-action {
+  margin-left: 8rpx;
+  font-size: 24rpx;
+}
+
+.record-action.borrow {
+  color: #d97706;
+}
+
+.record-action.return {
+  color: #16a34a;
+}
+
+.record-sub {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #9aa0a6;
+}
+
+.load-more {
+  text-align: center;
+  padding: 24rpx;
+  color: #9aa0a6;
+  font-size: 26rpx;
+}

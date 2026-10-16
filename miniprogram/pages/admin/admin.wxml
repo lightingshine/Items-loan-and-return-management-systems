@@ -1,0 +1,60 @@
+<view class="page">
+  <view class="toolbar">
+    <button class="btn-primary add-btn" bindtap="onAdd">＋ 新增物品</button>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+  <view wx:elif="{{items.length === 0}}" class="empty">暂无物品，点击上方按钮新增</view>
+
+  <view wx:else class="item-list">
+    <view class="item-card" wx:for="{{items}}" wx:key="_id">
+      <view class="item-top">
+        <view class="item-name">{{item.name}}</view>
+        <view class="status-badge {{item.status}}">{{item.statusText}}</view>
+      </view>
+      <view class="item-code">编码：{{item.code}}</view>
+      <view class="item-borrower" wx:if="{{item.status === 'borrowed'}}">
+        借用人：{{item.borrowerName}} · {{item.borrowTimeText}}
+      </view>
+      <view class="item-actions">
+        <view class="action-btn" bindtap="onEdit" data-id="{{item._id}}">编辑</view>
+        <view class="action-btn" bindtap="onMarkBorrow" data-id="{{item._id}}" wx:if="{{item.status !== 'borrowed'}}">标记借出</view>
+        <view class="action-btn" bindtap="onMarkReturn" data-id="{{item._id}}" wx:else>标记归还</view>
+        <view class="action-btn danger" bindtap="onDelete" data-id="{{item._id}}">删除</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mask" wx:if="{{showForm}}" bindtap="onCancelForm"></view>
+  <view class="form-modal" wx:if="{{showForm}}">
+    <view class="form-title">{{formMode === 'add' ? '新增物品' : '编辑物品'}}</view>
+    <view class="form-field">
+      <text class="form-label">物品名称 *</text>
+      <input class="form-input" value="{{form.name}}" data-key="name" bindinput="onFormInput" placeholder="如：CAN 通讯盒" />
+    </view>
+    <view class="form-field">
+      <text class="form-label">部门名 *</text>
+      <input class="form-input" value="{{form.department}}" data-key="department" bindinput="onFormInput" placeholder="如：研发部" />
+    </view>
+    <view class="form-field">
+      <text class="form-label">小组名</text>
+      <input class="form-input" value="{{form.groupName}}" data-key="groupName" bindinput="onFormInput" placeholder="如：嵌入式组（可选）" />
+    </view>
+    <view class="form-field">
+      <text class="form-label">人员名 *</text>
+      <input class="form-input" value="{{form.ownerName}}" data-key="ownerName" bindinput="onFormInput" placeholder="物品归属人，如：张三" />
+    </view>
+    <view class="form-field">
+      <text class="form-label">物品编码</text>
+      <input class="form-input" value="{{form.code}}" data-key="code" bindinput="onFormInput" placeholder="留空则自动生成（用于生成二维码）" />
+    </view>
+    <view class="form-field">
+      <text class="form-label">描述</text>
+      <textarea class="form-textarea" value="{{form.description}}" data-key="description" bindinput="onFormInput" placeholder="物品说明（可选）"></textarea>
+    </view>
+    <view class="form-actions">
+      <button class="btn-plain form-btn" bindtap="onCancelForm">取消</button>
+      <button class="btn-primary form-btn" bindtap="onSubmit" disabled="{{submitting}}">保存</button>
+    </view>
+  </view>
+</view>

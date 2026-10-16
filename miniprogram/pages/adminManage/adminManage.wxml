@@ -1,0 +1,22 @@
+<view class="page">
+  <view class="intro">管理管理员名单：可将普通用户设为管理员，或取消管理员权限。</view>
+
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <view wx:elif="{{users.length === 0}}" class="empty">暂无用户</view>
+
+  <view wx:else class="user-list">
+    <view class="user-item" wx:for="{{users}}" wx:key="_id">
+      <view class="user-avatar">{{item.nickname ? item.nickname[0] : '用'}}</view>
+      <view class="user-body">
+        <view class="user-name">{{item.nickname || '微信用户'}}</view>
+        <view class="role-badge {{item.role}}">{{item.roleText}}</view>
+      </view>
+      <view class="user-action" wx:if="{{item.role === 'user' || item.role === 'admin'}}">
+        <view class="toggle-btn {{item.role === 'admin' ? 'off' : ''}}" bindtap="onToggleAdmin" data-id="{{item._id}}">
+          {{item.role === 'admin' ? '取消管理员' : '设为管理员'}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

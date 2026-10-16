@@ -1,0 +1,6 @@
+node_modules/
+cloudfunctions/*/node_modules/
+cloudfunctions/*/package-lock.json
+.DS_Store
+*.log
+project.private.config.json

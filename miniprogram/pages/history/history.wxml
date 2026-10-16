@@ -1,0 +1,24 @@
+<view class="page">
+  <view class="filter-tabs">
+    <view class="filter-tab {{filter === 'all' ? 'active' : ''}}" bindtap="onFilter" data-filter="all">全部</view>
+    <view class="filter-tab {{filter === 'borrow' ? 'active' : ''}}" bindtap="onFilter" data-filter="borrow">借出</view>
+    <view class="filter-tab {{filter === 'return' ? 'active' : ''}}" bindtap="onFilter" data-filter="return">归还</view>
+  </view>
+
+  <view class="total-tip" wx:if="{{total > 0}}">近一年共 {{total}} 条记录</view>
+
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <view wx:elif="{{list.length === 0}}" class="empty">暂无记录</view>
+
+  <view wx:else class="record-list">
+    <view class="record-item" wx:for="{{list}}" wx:key="_id">
+      <view class="record-dot {{item.action}}"></view>
+      <view class="record-body">
+        <view class="record-title">{{item.itemName}} <text class="record-action {{item.action}}">{{item.actionText}}</text></view>
+        <view class="record-sub">{{item.userName || '未知用户'}} · {{item.timeText}}</view>
+      </view>
+    </view>
+    <view class="load-more" wx:if="{{hasMore}}">{{loadingMore ? '加载中...' : '上拉加载更多'}}</view>
+  </view>
+</view>

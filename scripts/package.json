@@ -1,0 +1,12 @@
+{
+  "name": "lab-item-qrcode",
+  "version": "1.0.0",
+  "private": true,
+  "description": "根据物品编码批量生成二维码图片，用于打印后贴在物品上",
+  "scripts": {
+    "gen": "node generate-qrcodes.js"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.3"
+  }
+}

@@ -1,0 +1,152 @@
+.page {
+  padding-bottom: 40rpx;
+}
+
+.summary {
+  display: flex;
+  padding: 24rpx 24rpx 8rpx;
+}
+
+.summary-item {
+  flex: 1;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx 0;
+  margin: 0 8rpx;
+  box-shadow: 0 4rpx 16rpx rgba(31, 35, 41, 0.06);
+}
+
+.summary-num {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #1f2329;
+}
+
+.summary-num.available {
+  color: #16a34a;
+}
+
+.summary-num.borrowed {
+  color: #d97706;
+}
+
+.summary-label {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #9aa0a6;
+}
+
+.seg {
+  display: flex;
+  padding: 24rpx 24rpx 8rpx;
+}
+
+.seg-item {
+  flex: 1;
+  text-align: center;
+  height: 72rpx;
+  line-height: 72rpx;
+  color: #5f646b;
+  font-size: 28rpx;
+  background: #ffffff;
+  margin: 0 8rpx;
+  border-radius: 36rpx;
+}
+
+.seg-item.active {
+  background: #3b7cff;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.drill-bar {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 32rpx 8rpx;
+}
+
+.back-btn {
+  color: #3b7cff;
+  font-size: 28rpx;
+  margin-right: 16rpx;
+}
+
+.drill-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1f2329;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin: 16rpx 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(31, 35, 41, 0.06);
+}
+
+.row-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.row-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1f2329;
+}
+
+.row-sub {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #9aa0a6;
+}
+
+.row-count {
+  margin-left: 16rpx;
+  font-size: 24rpx;
+  color: #5f646b;
+  white-space: nowrap;
+}
+
+.row-arrow {
+  margin-left: 12rpx;
+  color: #c0c4ca;
+  font-size: 40rpx;
+}
+
+.item-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin: 16rpx 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(31, 35, 41, 0.06);
+}
+
+.item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1f2329;
+}
+
+.item-sub {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #9aa0a6;
+}
+
+.item-borrower {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #d97706;
+}

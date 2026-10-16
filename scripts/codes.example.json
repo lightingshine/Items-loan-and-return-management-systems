@@ -1,0 +1,5 @@
+[
+  { "name": "CAN通讯盒", "code": "IL-ABC123" },
+  { "name": "示波器", "code": "IL-DEF456" },
+  { "name": "万用表", "code": "IL-GHI789" }
+]

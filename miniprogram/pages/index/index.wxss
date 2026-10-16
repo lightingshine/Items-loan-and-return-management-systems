@@ -1,0 +1,150 @@
+.page {
+  padding-bottom: 180rpx;
+}
+
+.header {
+  padding: 40rpx 32rpx 20rpx;
+  background: linear-gradient(135deg, #4b8bff, #3b7cff);
+  color: #ffffff;
+}
+
+.header-title {
+  font-size: 44rpx;
+  font-weight: 600;
+}
+
+.header-stats {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.stat-chip {
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.stat-available {
+  background: rgba(220, 252, 231, 0.95);
+  color: #16a34a;
+}
+
+.stat-borrowed {
+  background: rgba(254, 243, 199, 0.95);
+  color: #b45309;
+}
+
+.search-bar {
+  padding: 24rpx 24rpx 0;
+}
+
+.search-input {
+  background: #ffffff;
+  border-radius: 44rpx;
+  padding: 0 32rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  box-shadow: 0 4rpx 16rpx rgba(31, 35, 41, 0.06);
+}
+
+.search-placeholder {
+  color: #b3b8bf;
+}
+
+.filter-tabs {
+  display: flex;
+  padding: 24rpx 24rpx 0;
+}
+
+.filter-tab {
+  flex: 1;
+  text-align: center;
+  height: 72rpx;
+  line-height: 72rpx;
+  color: #5f646b;
+  font-size: 28rpx;
+  background: #ffffff;
+  margin: 0 8rpx;
+  border-radius: 36rpx;
+}
+
+.filter-tab.active {
+  background: #3b7cff;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.item-list {
+  padding-top: 16rpx;
+}
+
+.item-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 28rpx 24rpx;
+  margin: 16rpx 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(31, 35, 41, 0.06);
+}
+
+.item-icon {
+  font-size: 48rpx;
+  margin-right: 24rpx;
+}
+
+.item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1f2329;
+}
+
+.item-code {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #9aa0a6;
+}
+
+.item-borrower {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #d97706;
+}
+
+.item-right {
+  margin-left: 16rpx;
+}
+
+.scan-fab {
+  position: fixed;
+  right: 32rpx;
+  bottom: 60rpx;
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4b8bff, #3b7cff);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12rpx 32rpx rgba(59, 124, 255, 0.4);
+}
+
+.scan-fab-icon {
+  font-size: 56rpx;
+  line-height: 1;
+  margin-bottom: 6rpx;
+}
+
+.scan-fab-text {
+  font-size: 22rpx;
+}

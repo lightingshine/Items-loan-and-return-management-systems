@@ -1,0 +1,58 @@
+<view class="page">
+  <view class="scan-box">
+    <view class="scan-btn" bindtap="onScan">
+      <view class="scan-icon">📷</view>
+      <view class="scan-text">点击扫描物品二维码</view>
+    </view>
+  </view>
+
+  <view class="manual-box">
+    <input
+      class="manual-input"
+      placeholder="或手动输入物品编码"
+      placeholder-class="manual-placeholder"
+      value="{{inputCode}}"
+      bindinput="onInput"
+    />
+    <view class="manual-btn" bindtap="onManualSearch">查询</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">查询中...</view>
+
+  <view wx:elif="{{error}}" class="error-tip">{{error}}</view>
+
+  <view wx:elif="{{result}}" class="result">
+    <view class="result-card">
+      <view class="result-head">
+        <view class="result-name">{{result.name}}</view>
+        <view class="status-badge {{result.status}}">{{result.statusText}}</view>
+      </view>
+      <view class="result-code">编码：{{result.code}}</view>
+      <view class="result-desc" wx:if="{{result.description}}">{{result.description}}</view>
+
+      <view class="result-borrower" wx:if="{{result.status === 'borrowed'}}">
+        借用人：{{result.borrowerName}} · {{result.borrowTimeText}}
+      </view>
+
+      <block wx:if="{{result.status === 'available'}}">
+        <button class="btn-primary result-btn" bindtap="onBorrow" disabled="{{submitting}}">确认借出</button>
+      </block>
+      <block wx:elif="{{result.borrowerOpenid === myOpenid}}">
+        <button class="btn-primary result-btn" bindtap="onReturn" disabled="{{submitting}}">确认归还</button>
+      </block>
+      <block wx:else>
+        <view class="result-hint">该物品由他人借出，只能由借用人或管理员归还</view>
+        <button class="btn-primary result-btn" bindtap="onReturn" disabled="{{submitting}}" wx:if="{{role === 'admin' || role === 'superadmin'}}">管理员代归还</button>
+      </block>
+    </view>
+
+    <view class="records-title" wx:if="{{records.length}}">最近记录</view>
+    <view class="record-item" wx:for="{{records}}" wx:key="_id">
+      <view class="record-dot {{item.action}}"></view>
+      <view class="record-body">
+        <view class="record-line">{{item.userName || '未知用户'}} {{item.actionText}}了该物品</view>
+        <view class="record-time">{{item.timeText}}</view>
+      </view>
+    </view>
+  </view>
+</view>

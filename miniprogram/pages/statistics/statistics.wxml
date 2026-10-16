@@ -1,0 +1,75 @@
+<view class="page">
+  <view class="summary">
+    <view class="summary-item">
+      <view class="summary-num">{{stats.total}}</view>
+      <view class="summary-label">物品总数</view>
+    </view>
+    <view class="summary-item">
+      <view class="summary-num available">{{stats.available}}</view>
+      <view class="summary-label">空闲</view>
+    </view>
+    <view class="summary-item">
+      <view class="summary-num borrowed">{{stats.borrowed}}</view>
+      <view class="summary-label">已借出</view>
+    </view>
+  </view>
+
+  <view class="seg">
+    <view class="seg-item {{mode === 'department' ? 'active' : ''}}" bindtap="onMode" data-mode="department">按部门</view>
+    <view class="seg-item {{mode === 'group' ? 'active' : ''}}" bindtap="onMode" data-mode="group">按小组</view>
+    <view class="seg-item {{mode === 'person' ? 'active' : ''}}" bindtap="onMode" data-mode="person">按人员</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <block wx:elif="{{drilled}}">
+    <view class="drill-bar">
+      <view class="back-btn" bindtap="onBack">‹ 返回</view>
+      <view class="drill-title">{{drilled.title}}</view>
+    </view>
+    <view wx:if="{{drilledItems.length === 0}}" class="empty">暂无物品</view>
+    <view class="item-card" wx:for="{{drilledItems}}" wx:key="_id" bindtap="goDetail" data-id="{{item._id}}">
+      <view class="item-body">
+        <view class="item-name">{{item.name}}</view>
+        <view class="item-sub">{{item.department}} / {{item.groupName}} / {{item.ownerName}}</view>
+        <view class="item-borrower" wx:if="{{item.status === 'borrowed'}}">借用人：{{item.borrowerName}} · {{item.borrowTimeText}}</view>
+      </view>
+      <view class="status-badge {{item.status}}">{{item.statusText}}</view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view wx:if="{{mode === 'department'}}">
+      <view wx:if="{{departments.length === 0}}" class="empty">暂无物品，请先在物品管理中录入</view>
+      <view class="row" wx:for="{{departments}}" wx:key="name" bindtap="onDrill" data-type="department" data-value="{{item.name}}">
+        <view class="row-name">{{item.name}}</view>
+        <view class="row-count">物品 {{item.total}} · 空闲 {{item.available}} · 借出 {{item.borrowed}}</view>
+        <view class="row-arrow">›</view>
+      </view>
+    </view>
+
+    <view wx:if="{{mode === 'group'}}">
+      <view wx:if="{{groups.length === 0}}" class="empty">暂无物品</view>
+      <view class="row" wx:for="{{groups}}" wx:key="key" bindtap="onDrill" data-type="group" data-value="{{item.name}}" data-dept="{{item.department}}">
+        <view class="row-main">
+          <view class="row-name">{{item.name}}</view>
+          <view class="row-sub">{{item.department}}</view>
+        </view>
+        <view class="row-count">物品 {{item.total}} · 空闲 {{item.available}} · 借出 {{item.borrowed}}</view>
+        <view class="row-arrow">›</view>
+      </view>
+    </view>
+
+    <view wx:if="{{mode === 'person'}}">
+      <view wx:if="{{persons.length === 0}}" class="empty">暂无物品</view>
+      <view class="row" wx:for="{{persons}}" wx:key="key" bindtap="onDrill" data-type="person" data-value="{{item.name}}" data-dept="{{item.department}}" data-group="{{item.group}}">
+        <view class="row-main">
+          <view class="row-name">{{item.name}}</view>
+          <view class="row-sub">{{item.department}} / {{item.group}}</view>
+        </view>
+        <view class="row-count">名下物品 {{item.total}} · 空闲 {{item.available}} · 借出 {{item.borrowed}}</view>
+        <view class="row-arrow">›</view>
+      </view>
+    </view>
+  </block>
+</view>

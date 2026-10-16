@@ -1,0 +1,163 @@
+.page {
+  padding: 24rpx;
+}
+
+.scan-box {
+  padding: 60rpx 24rpx;
+}
+
+.scan-btn {
+  background: #ffffff;
+  border: 4rpx dashed #3b7cff;
+  border-radius: 24rpx;
+  padding: 80rpx 24rpx;
+  text-align: center;
+  color: #3b7cff;
+}
+
+.scan-icon {
+  font-size: 88rpx;
+  line-height: 1;
+}
+
+.scan-text {
+  margin-top: 24rpx;
+  font-size: 30rpx;
+}
+
+.manual-box {
+  display: flex;
+  margin: 0 8rpx;
+}
+
+.manual-input {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 44rpx;
+  padding: 0 32rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  box-shadow: 0 4rpx 16rpx rgba(31, 35, 41, 0.06);
+}
+
+.manual-placeholder {
+  color: #b3b8bf;
+}
+
+.manual-btn {
+  margin-left: 16rpx;
+  width: 140rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #3b7cff;
+  color: #ffffff;
+  border-radius: 44rpx;
+  font-size: 28rpx;
+}
+
+.error-tip {
+  margin-top: 60rpx;
+  text-align: center;
+  color: #ef4444;
+  font-size: 28rpx;
+}
+
+.result {
+  margin-top: 32rpx;
+}
+
+.result-card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 32rpx 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(31, 35, 41, 0.06);
+}
+
+.result-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-name {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.result-code {
+  margin-top: 12rpx;
+  color: #9aa0a6;
+  font-size: 26rpx;
+}
+
+.result-desc {
+  margin-top: 12rpx;
+  color: #5f646b;
+  font-size: 26rpx;
+}
+
+.result-borrower {
+  margin-top: 16rpx;
+  color: #d97706;
+  font-size: 26rpx;
+}
+
+.result-btn {
+  margin-top: 32rpx;
+}
+
+.result-hint {
+  margin-top: 24rpx;
+  color: #9aa0a6;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.records-title {
+  margin: 40rpx 8rpx 12rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1f2329;
+}
+
+.record-item {
+  display: flex;
+  align-items: flex-start;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 12rpx;
+}
+
+.record-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  margin: 10rpx 20rpx 0 6rpx;
+  flex-shrink: 0;
+}
+
+.record-dot.borrow {
+  background: #f59e0b;
+}
+
+.record-dot.return {
+  background: #16a34a;
+}
+
+.record-body {
+  flex: 1;
+}
+
+.record-line {
+  font-size: 28rpx;
+  color: #1f2329;
+}
+
+.record-time {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #9aa0a6;
+}

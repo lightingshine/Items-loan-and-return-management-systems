@@ -1,0 +1,51 @@
+<view class="page">
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <block wx:elif="{{item}}">
+    <view class="detail-card">
+      <view class="detail-head">
+        <view class="detail-name">{{item.name}}</view>
+        <view class="status-badge {{item.status}}">{{item.statusText}}</view>
+      </view>
+      <view class="detail-code">物品编码：{{item.code}}</view>
+      <view class="detail-org" wx:if="{{item.orgText}}">归属：{{item.orgText}}</view>
+      <view class="detail-desc" wx:if="{{item.description}}">{{item.description}}</view>
+      <view class="detail-meta">录入时间：{{item.createTimeText}}</view>
+
+      <view class="detail-borrower" wx:if="{{item.status === 'borrowed'}}">
+        <view class="borrower-label">当前借用人</view>
+        <view class="borrower-name">{{item.borrowerName}}</view>
+        <view class="borrower-time">借出时间：{{item.borrowTimeText}}</view>
+      </view>
+
+      <block wx:if="{{item.status === 'available'}}">
+        <button class="btn-primary detail-btn" bindtap="onBorrow" disabled="{{submitting}}">扫码后确认借出</button>
+      </block>
+      <block wx:elif="{{item.borrowerOpenid === myOpenid}}">
+        <button class="btn-primary detail-btn" bindtap="onReturn" disabled="{{submitting}}">确认归还</button>
+      </block>
+      <block wx:else>
+        <view class="detail-hint">该物品由他人借出，只能由借用人或管理员归还</view>
+        <button class="btn-primary detail-btn" bindtap="onReturn" disabled="{{submitting}}" wx:if="{{role === 'admin' || role === 'superadmin'}}">管理员代归还</button>
+      </block>
+
+      <view class="admin-actions" wx:if="{{role === 'admin' || role === 'superadmin'}}">
+        <button class="btn-plain admin-btn" bindtap="onEdit">编辑物品</button>
+        <button class="btn-danger admin-btn" bindtap="onDelete">删除物品</button>
+      </view>
+    </view>
+
+    <view class="records-header">借还历史</view>
+    <view wx:if="{{records.length === 0}}" class="empty">暂无记录</view>
+    <view class="record-item" wx:for="{{records}}" wx:key="_id">
+      <view class="record-dot {{item.action}}"></view>
+      <view class="record-body">
+        <view class="record-line">{{item.userName || '未知用户'}} {{item.actionText}}了该物品</view>
+        <view class="record-time">{{item.timeText}}<text wx:if="{{item.operatorName && item.operatorName !== item.userName}}"> · 操作人：{{item.operatorName}}</text></view>
+      </view>
+    </view>
+    <view class="load-more" bindtap="onLoadMore" wx:if="{{hasMore}}">
+      {{loadingMore ? '加载中...' : '加载更多'}}
+    </view>
+  </block>
+</view>
